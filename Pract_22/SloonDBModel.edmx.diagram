@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd8e31a9a5d24b25a55a0fb818c050bb" Name="Diagram1">
+        <EntityTypeShape EntityType="SaloonDBModel.AttachedProduct" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Basket" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Client" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.ClientService" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.DocumentByService" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Gender" Width="1.5" PointX="1.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Manufacturer" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Product" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.ProductBasket" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.ProductSale" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Role" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Service" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.ServicePhoto" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.Tag" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloonDBModel.User" Width="1.5" PointX="1.5" PointY="15.5" IsExpanded="true" />
+        <AssociationConnector Association="SaloonDBModel.FK_AttachedProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_AttachedProduct_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_Basket_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ProductBasket_Basket" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_Client_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ClientService_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ClientService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ProductBasket_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ProductPhoto_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.FK_ServicePhoto_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloonDBModel.TagOfClient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

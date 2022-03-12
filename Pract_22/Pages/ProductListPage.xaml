@@ -1,0 +1,120 @@
+﻿<Page x:Class="Pract_22.Pages.ProductListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pract_22.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductListPage">
+
+    <ScrollViewer>
+        <StackPanel>
+            <StackPanel x:Name="ContentPanel">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Width="250">
+                            <Label Content="Название/Описание:"/>
+                            <TextBox x:Name="NameOrDescriptionTb" TextChanged="NameOrDescriptionTb_TextChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="250">
+                            <Label Content="Фильтрация:"/>
+                            <ComboBox x:Name="FiltrCb" Height="20" SelectionChanged="FiltrCb_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="200">
+                            <Label Content="Сортировка цене:"/>
+                            <StackPanel Orientation="Vertical">
+                                <RadioButton x:Name="UpRb" Content="По возрастанию" Checked="UpRb_Checked"/>
+                                <RadioButton x:Name="DownRb" Content="По убыванию" Checked="DownRb_Checked"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Продукты" Margin="5,0" Width="100"/>
+                    <TextBlock x:Name="CountTb" Margin="5,0"/>
+                    <TextBlock Text="/" Margin="5,0"/>
+                    <TextBlock x:Name="ActualCountTb" Margin="5,0"/>
+                    <Button x:Name="AddBtn" Content="Добавить" Height="30" Margin="5,0" Click="ContentClick"/>
+                    <Button x:Name="AddBasketBtn" Content="Моя корзина" Height="30" Margin="5,0" Click="ContentClick"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <ItemsControl x:Name="ProductList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="DataBorder" Margin="10" Width="180" Height="240" CornerRadius="5" BorderBrush="Black" BorderThickness="1">
+                                <StackPanel IsEnabled="{Binding IsActive}" Width="180" Height="230" MouseDown="StackPanel_MouseDown">
+                                    <Border x:Name="ImageBorderList" Width="100" Height="100" CornerRadius="5" Margin="5" BorderBrush="Black" BorderThickness="1">
+                                        <ListView x:Name="ProductPhotoList" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding ProductPhoto}" Width="100" Height="100">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Image Source="{Binding PhotoPath}" Width="100" Height="100"/>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="Padding" Value="0"/>
+                                                    <Setter Property="Margin" Value="0"/>
+                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                        </ListView>
+                                    </Border>
+                                    <Border x:Name="ImageBorder" Visibility="Hidden" Width="0" Height="0" CornerRadius="5" Margin="0" BorderBrush="Black" BorderThickness="1">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding MainImagePath}"/>
+                                        </Border.Background>
+                                    </Border>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <RadioButton/>
+                                        <RadioButton/>
+                                        <RadioButton/>
+                                    </StackPanel>
+                                        <TextBlock x:Name="TitleTb" Text="{Binding Title}" TextAlignment="Center" TextWrapping="Wrap"/>
+                                        <TextBlock x:Name="AttachedCountTb" Text="{Binding AttachedProduct.Count}" TextAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding Cost}"/>
+                                        <TextBlock Text="рублей"/>
+                                    </StackPanel>
+                                    <TextBlock x:Name="IsActiveTb" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                    <Setter Property="Background" TargetName="DataBorder" Value="White"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                    <Setter Property="Background" TargetName="DataBorder" Value="Gray"/>
+                                    <Setter Property="Text" TargetName="IsActiveTb" Value="Не активен"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding AttachedProduct.Count}" Value="0">
+                                    <Setter Property="Text" TargetName="AttachedCountTb" Value=""/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ProductPhoto.Count}" Value="0">
+                                    <Setter Property="Visibility" TargetName="ImageBorderList" Value="Hidden"/>
+                                    <Setter Property="Width" TargetName="ImageBorderList" Value="0"/>
+                                    <Setter Property="Height" TargetName="ImageBorderList" Value="0"/>
+                                    <Setter Property="Width" TargetName="ImageBorder" Value="100"/>
+                                    <Setter Property="Height" TargetName="ImageBorder" Value="100"/>
+                                    <Setter Property="Visibility" TargetName="ImageBorder" Value="Visible"/>
+                                    <Setter Property="Margin" TargetName="ImageBorder" Value="5"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
